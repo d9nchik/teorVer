@@ -1,5 +1,5 @@
 import numpy as np
-from math import factorial, e, sqrt, pi, ceil
+from math import factorial, e, sqrt, pi, ceil, floor
 from scipy.special import erf
 from scipy.optimize import fsolve
 
@@ -17,6 +17,13 @@ def theorem_bernuli(k: int, n: int, p: float, q: float) -> float:
     :return: result of theorem bernuli
     '''
     return combination(k, n) * (p ** k) * (q ** (n - k))
+
+
+def most_possible_success_variants(n: int, p: float):
+    q = 1 - p
+    first = ceil(n * p - q)
+    second = floor(n * p + p)
+    return [x for x in range(first, second+1)]
 
 
 # write puason from to infinity
@@ -58,4 +65,4 @@ def social_mavr_laplace(alfa: float, betta: float):
     return int((t_betta ** 2) / 4 / alfa ** 2) + 1
 
 
-print(social_mavr_laplace(0.01, 0.99))
+print(most_possible_success_variants(29, 0.9))
