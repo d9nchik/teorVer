@@ -1,4 +1,5 @@
 from math import factorial, e, sqrt, pi
+from scipy.special import erf
 
 
 def combination(fro: int, to: int) -> float:
@@ -33,18 +34,15 @@ def local_theorem_of_mavr_laplas(k: int, n: int, p: float, q: float) -> float:
     print('x={}'.format(x))
     return one_divided_by_sqr_of_npq * gauss_function(x)
 
-# not very good
-def local_theorem_of_mavr_laplas_range(k1: int, k2: int, n: int, p: float, q: float) -> float:
-    total = 0
-    for k in range(k2 - k1):
-        total += local_theorem_of_mavr_laplas(k1 + k, n, p, q)
-    return total
+
+def laplassFunction(x: float) -> float:
+    return erf(x / 2 ** 0.5) / 2
 
 
-# result = 1
-# for x in range(0, 3):
-#     result -= formula_puason(x, 1000, 0.003)
-#     print(x)
-# print(result)
+def integral_theorem_of_mavr_laplas(n: int, k1: int, k2: int, p: float) -> float:
+    q = 1 - p
+    x1 = (k1 - n * p) / sqrt(n * p * q)
+    x2 = (k2 - n * p) / sqrt(n * p * q)
+    return laplassFunction(x2) - laplassFunction(x1)
 
-print(local_theorem_of_mavr_laplas_range(70, 301, 300, 0.25, 0.75))
+print(integral_theorem_of_mavr_laplas(10_000, 4_850, 5_149, 0.5))
