@@ -8,36 +8,54 @@ def combination(fro: int, to: int) -> float:
     return factorial(to) / factorial(to - fro) / factorial(fro)
 
 
-def theorem_bernuli(k: int, n: int, p: float, q: float) -> float:
+def theorem_bernuli(k: int, n: int, p: float) -> float:
     '''
     :param k: number of successful attempt
     :param n: number of attempts
     :param p: successful probability
-    :param q: unsuccessful attempt
-    :return: result of theorem bernuli
+    :return: probability
     '''
+    q = 1 - p
     return combination(k, n) * (p ** k) * (q ** (n - k))
 
 
 def most_possible_success_variants(n: int, p: float):
+    '''
+    :param n: number of attempts
+    :param p: successful probability
+    :return: most possible success variants
+    '''
     q = 1 - p
     first = ceil(n * p - q)
     second = floor(n * p + p)
-    return [x for x in range(first, second+1)]
+    return [x for x in range(first, second + 1)]
 
 
 # write puason from to infinity
 def formula_puason(k: int, n: int, p: float) -> float:
+    '''
+    Good when n is very big and lambda between 0.1 and 10
+    :param k: number of successful attempts
+    :param n: number of attempts
+    :param p: successful probability
+    :return: probability
+    '''
     this_lambda = n * p
     return (this_lambda ** k) / factorial(k) * (e ** (-this_lambda))
+
+
+def puasson_range(n: int, p: float, start: int) -> float:
+    total = 1
+    for x in range(start):
+        total -= formula_puason(x, n, p)
+    return total
 
 
 def gauss_function(x: float) -> float:
     return (e ** ((-x ** 2) / 2)) / sqrt(2 * pi)
 
-
-# todo q get from p
-def local_theorem_of_mavr_laplace(k: int, n: int, p: float, q: float) -> float:
+def local_theorem_of_mavr_laplace(k: int, n: int, p: float) -> float:
+    q = 1 - p
     one_divided_by_sqr_of_npq = 1 / sqrt(n * p * q)
     x = (k - n * p) * one_divided_by_sqr_of_npq
     print('x={}'.format(x))
@@ -65,4 +83,4 @@ def social_mavr_laplace(alfa: float, betta: float):
     return int((t_betta ** 2) / 4 / alfa ** 2) + 1
 
 
-print(most_possible_success_variants(29, 0.9))
+print(integral_theorem_of_mavr_laplace(3600, 1959, 3601, 0.5))
