@@ -68,7 +68,7 @@ def laplace_function(x: float) -> float:
 
 
 def reverse_laplace_function(x: float) -> float:
-    return float(fsolve(lambda value: laplace_function(value[0]) - x, np.eye(1))[0])
+    return float(fsolve(lambda value: laplace_function(value[0]) - x, np.array([1]))[0])
 
 
 def integral_theorem_of_mavr_laplace(n: int, k1: int, k2: int, p: float) -> float:
@@ -85,4 +85,4 @@ def social_mavr_laplace(alfa: float, betta: float):
 
 
 if __name__ == '__main__':
-    print(integral_theorem_of_mavr_laplace(3600, 1959, 3601, 0.5))
+    print(most_possible_success_variants(30_000, 0.25))
