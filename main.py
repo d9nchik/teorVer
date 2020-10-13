@@ -54,6 +54,7 @@ def puasson_range(n: int, p: float, start: int) -> float:
 def gauss_function(x: float) -> float:
     return (e ** ((-x ** 2) / 2)) / sqrt(2 * pi)
 
+
 def local_theorem_of_mavr_laplace(k: int, n: int, p: float) -> float:
     q = 1 - p
     one_divided_by_sqr_of_npq = 1 / sqrt(n * p * q)
@@ -67,7 +68,7 @@ def laplace_function(x: float) -> float:
 
 
 def reverse_laplace_function(x: float) -> float:
-    return float(fsolve(lambda value: laplace_function(value) - x, np.ndarray([1]))[0])
+    return float(fsolve(lambda value: laplace_function(value[0]) - x, np.eye(1))[0])
 
 
 def integral_theorem_of_mavr_laplace(n: int, k1: int, k2: int, p: float) -> float:
@@ -83,4 +84,5 @@ def social_mavr_laplace(alfa: float, betta: float):
     return int((t_betta ** 2) / 4 / alfa ** 2) + 1
 
 
-print(integral_theorem_of_mavr_laplace(3600, 1959, 3601, 0.5))
+if __name__ == '__main__':
+    print(integral_theorem_of_mavr_laplace(3600, 1959, 3601, 0.5))
