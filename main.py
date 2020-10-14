@@ -1,7 +1,8 @@
-import numpy as np
 from math import factorial, e, sqrt, pi, ceil, floor
-from scipy.special import erf
+
+import numpy as np
 from scipy.optimize import fsolve
+from scipy.special import erf
 
 
 def combination(fro: int, to: int) -> float:
@@ -119,6 +120,19 @@ def integral_theorem_of_mavr_laplace(n: int, k1: int, k2: int, p: float) -> floa
     x1 = (k1 - n * p) / sqrt(n * p * q)
     x2 = (k2 - n * p) / sqrt(n * p * q)
     return laplace_function(x2) - laplace_function(x1)
+
+
+def three_sigma(n: int, p: float) -> tuple:
+    """
+    Show variants possible with practical possibility (99.73%)
+    :param n: number of attempts
+    :param p: successful probability
+    :return: return tuple (inclusive, exclusive) of possible variant
+    """
+    q = 1 - p
+    n_p = n * p
+    three_sqrt_of_npq = 3 * sqrt(n_p * q)
+    return n_p - three_sqrt_of_npq, n_p + three_sqrt_of_npq
 
 
 def social_mavr_laplace(alfa: float, betta: float):

@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from main import *
 
 
@@ -46,3 +47,6 @@ class Test(TestCase):
     def test_social_mavr_laplace(self):
         self.assertEqual(6807, social_mavr_laplace(0.01, 0.9))
         self.assertEqual(16_642, social_mavr_laplace(0.01, 0.99))
+
+    def test_three_sigma(self):
+        self.assertTupleEqual((7_275, 7_725), three_sigma(30_000, 1 / 4))
