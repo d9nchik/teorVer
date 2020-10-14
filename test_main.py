@@ -36,8 +36,8 @@ class Test(TestCase):
         self.assertAlmostEqual(-0.5, laplace_function(-6))
 
     def test_reverse_laplace_function(self):
-        # TODO: implement
-        self.fail()
+        self.assertAlmostEqual(2, reverse_laplace_function(0.47725), 5)
+        self.assertEqual(-5, reverse_laplace_function(-0.5))
 
     def test_integral_theorem_of_mavr_laplace(self):
         self.assertAlmostEqual(0, integral_theorem_of_mavr_laplace(10_000, 6_000, 10_000, 0.5))

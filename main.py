@@ -97,7 +97,13 @@ def reverse_laplace_function(x: float) -> float:
     :param x: value of function in searching point
     :return: argument
     """
-    return float(fsolve(lambda value: laplace_function(value[0]) - x, np.array([1]))[0])
+
+    result = float(fsolve(lambda value: laplace_function(value[0]) - x, np.array([1]))[0])
+    if result > 5:
+        return 5
+    elif result < -5:
+        return -5
+    return result
 
 
 def integral_theorem_of_mavr_laplace(n: int, k1: int, k2: int, p: float) -> float:
