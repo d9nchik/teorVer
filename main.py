@@ -88,7 +88,7 @@ def laplace_function(x: float) -> float:
     :param x: value of searching function
     :return: value of laplace function in the dot x
     """
-    return erf(x / 2 ** 0.5) / 2
+    return erf(np.array(x / 2 ** 0.5)) / 2
 
 
 def reverse_laplace_function(x: float) -> float:
