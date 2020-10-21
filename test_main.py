@@ -54,3 +54,7 @@ class Test(TestCase):
     def test_social_mavr_laplace_find_biggest_alfa(self):
         self.assertAlmostEqual(social_mavr_laplace_find_biggest_alfa(6_807, 0.9), 0.01, 5)
         self.assertAlmostEqual(social_mavr_laplace_find_biggest_alfa(16_642, 0.99), 0.01, 5)
+
+    def test_social_mavr_laplace_find_biggest_betta(self):
+        self.assertAlmostEqual(social_mavr_laplace_find_biggest_betta(6_807, 0.01), 0.9, 2)
+        self.assertAlmostEqual(social_mavr_laplace_find_biggest_betta(16_642, 0.01), 0.99, 2)

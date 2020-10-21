@@ -156,5 +156,17 @@ def social_mavr_laplace_find_biggest_alfa(n: int, betta: float) -> float:
     return sqrt((t_betta ** 2) / 4 / (n - 1))
 
 
+def social_mavr_laplace_find_biggest_betta(n: int, alfa: float) -> float:
+    """
+
+    :param n: number of attempts
+    :param alfa: precision
+    :return: betta - reliability
+    """
+    t_betta = sqrt(4 * alfa ** 2 * (n - 1))
+    return laplace_function(t_betta) * 2
+
+
 if __name__ == '__main__':
-    print(social_mavr_laplace_find_biggest_alfa(16642, 0.99))
+    print(social_mavr_laplace_find_biggest_betta(6807, 0.01))
+    print(social_mavr_laplace_find_biggest_betta(16642, 0.01))
