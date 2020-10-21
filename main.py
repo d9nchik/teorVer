@@ -146,6 +146,12 @@ def social_mavr_laplace(alfa: float, betta: float) -> int:
 
 
 def social_mavr_laplace_find_biggest_alfa(n: int, betta: float) -> float:
+    """
+
+    :param n: number of attempts
+    :param betta: reliability
+    :return: alfa - precision
+    """
     t_betta = ceil(reverse_laplace_function(betta / 2) * 100) / 100
     return sqrt((t_betta ** 2) / 4 / (n - 1))
 
