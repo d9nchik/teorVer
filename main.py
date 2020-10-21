@@ -32,7 +32,6 @@ def most_possible_success_variants(n: int, p: float):
     return [x for x in range(first, second + 1)]
 
 
-# write puason from to infinity
 def formula_puason(k: int, n: int, p: float) -> float:
     """
     Good when n is very big and lambda between 0.1 and 10
@@ -135,7 +134,7 @@ def three_sigma(n: int, p: float) -> tuple:
     return n_p - three_sqrt_of_npq, n_p + three_sqrt_of_npq
 
 
-def social_mavr_laplace(alfa: float, betta: float):
+def social_mavr_laplace(alfa: float, betta: float) -> int:
     """
 
     :param alfa: precision
@@ -143,9 +142,13 @@ def social_mavr_laplace(alfa: float, betta: float):
     :return: how many number of experiments we should conduct
     """
     t_betta = ceil(reverse_laplace_function(betta / 2) * 100) / 100
-    print(t_betta)
     return int((t_betta ** 2) / 4 / alfa ** 2) + 1
 
 
+def social_mavr_laplace_find_biggest_alfa(n: int, betta: float) -> float:
+    t_betta = ceil(reverse_laplace_function(betta / 2) * 100) / 100
+    return sqrt((t_betta ** 2) / 4 / (n - 1))
+
+
 if __name__ == '__main__':
-    print(most_possible_success_variants(30_000, 0.25))
+    print(social_mavr_laplace_find_biggest_alfa(16642, 0.99))

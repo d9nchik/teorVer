@@ -50,3 +50,7 @@ class Test(TestCase):
 
     def test_three_sigma(self):
         self.assertTupleEqual((7_275, 7_725), three_sigma(30_000, 1 / 4))
+
+    def test_social_mavr_laplace_find_biggest_alfa(self):
+        self.assertAlmostEqual(social_mavr_laplace_find_biggest_alfa(6_807, 0.9), 0.01, 5)
+        self.assertAlmostEqual(social_mavr_laplace_find_biggest_alfa(16_642, 0.99), 0.01, 5)
